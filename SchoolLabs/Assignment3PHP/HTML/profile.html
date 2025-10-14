@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment3 User Creation.">
+    <meta name="author" content="Pedro A Cabrera Cordoba">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Profile Creation</title>
+</head>
+<body>
+    <main class = "container">
+        <h1> Create a New Profile</h1>
+
+    <form id="createForm" action = "../php/CRUD.php?action=create" method="POST" enctype="multipart/form-data">
+
+      <label for="full_Name">Full Name *</label>
+      <input type="text" id="full_name" name="full_Name" required>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password *</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="phone">Phone Number (Optional)</label>
+      <!-- Regex is and continues to be a tremendously useful, albeit, very confusing right now thing I learned about in Java. -->
+      <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s]{6,20}">
+
+      <label for="bio">Bio (Optional)</label>
+      <!-- Wasn't sure what to put for the placeholder so I went to Twitter and looked around at the placeholders they had there -->
+      <textarea id="bio" name="bio" maxlength="300" rows="4" placeholder="Tell us something about yourself..."></textarea>
+
+      <label for="profile_image">Profile Image</label>
+      <!-- I found you can use the accept function here in the input to sanitize the input, but if html doesnt load properly of something,
+       your relying on front end for back end, and your gonna get in some knee deep shit if someone presses that vulnerability created
+       for the sake of being lazy -->
+      <input type="file" id="profile_image" name="profile_image" required>
+
+      <button type="submit">Create Profile</button>
+    </form>
+    <section id="message"></section>
+    </main>
+    <script src="../jScript/backToFrontConn.js"></script>
+</body>
+</html>

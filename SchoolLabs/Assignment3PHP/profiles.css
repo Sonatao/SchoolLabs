@@ -1,0 +1,84 @@
+/* Profile.css is the styling below here */
+/* profile.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.profiles-grid {
+  display: grid;
+  /* Use little thing here, makes life a breeze */
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  justify-content: center; 
+  gap: 20px;
+}
+
+
+.profile-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background-color: #fafafa;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-photo img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.profile-photo .no-photo {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  border-radius: 8px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.profile-info {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.profile-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0 5px;
+}
+
+.profile-card p {
+  font-size: 0.95em;
+  color: #555;
+}

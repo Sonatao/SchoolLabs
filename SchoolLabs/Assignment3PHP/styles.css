@@ -1,0 +1,176 @@
+/* The Most basic thing I could think of, just a black background, a search bar, and that's about it in total.  */
+
+body {
+  background-color: #0e0e10;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.container {
+  width: 400px;
+  text-align: center;
+}
+/* Targets all form elements, didn't know this did that till I did it by accident while navigating the dom, actually noticed this
+after while right now debugging and doing last checks ! */
+form {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 1rem;
+  width: 70%;
+  border: 0.1rem solid #555;
+  border-radius: 1rem;
+  background-color: #1a1a1d;
+  color: #f5f5f5;
+}
+
+button {
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #4e9af1;
+  /* Made this in case of a white mode, but I never built it, rest in peace. */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+/* This was uglier than the one before, it did not look as nice as I had it in my head honestly.  */
+
+/* .formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+/* Honestly, stole this one from twitter, I like the slight discoloration. */
+button:hover {
+  background-color: #367cd8;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+/* Styling for the Profile Creation Page */
+/* I know the styling is kind of whatever for this project, but I think I've come to appreciate black backgrounds and the uses of it,
+a very colorful website is cool too, but I think I might be leaning towards a more sleek black aesthetic as a personal taste. */
+
+/* I couldn't figure out how to make the little star red :/ */
+.container {
+  max-width: 450px;
+  margin: 4rem auto;
+  background: #1c1c1f;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #f0f0f0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+input, textarea {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  background: #2a2a2e;
+  color: #fff;
+  font-size: 1rem;
+}
+
+button {
+  background: #0078ff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0066d1;
+}
+
+#message {
+  margin-top: 1.2rem;
+  text-align: center;
+  color: #eee;
+}
+
+/* allProfiles.Html Styling */
+.profiles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: flex-start; /* line up from left to right */
+  align-items: flex-start;
+}
+
+.profile-card {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex: 0 0 250px; /* fixed card width so they wrap before overflow */
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.profile-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile-card h2 {
+  margin: 10px 0 5px;
+  font-size: 1.3em;
+}
+
+.profile-card p {
+  color: #555;
+  font-size: 0.9em;
+}
+
+/* Layout tweak for the allProfiles.php page so cards can sit side-by-side and wrap nicely */
+.profiles-page.container {
+  max-width: 1100px; /* wider than the form container so the grid can fit multiple cards */
+  margin: 2.5rem auto;
+  padding: 1rem 2rem;
+}
+
+.profiles-page .profiles-grid {
+  gap: 20px;
+}

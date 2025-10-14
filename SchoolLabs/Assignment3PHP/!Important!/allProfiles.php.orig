@@ -1,0 +1,66 @@
+Hello, Prof! This is a text doc here denoting what this looked like before I went off looking for what reason it could have been that the images weren't populating! 
+
+To give a quick run down, the issue stemmed from that the images inside of the Uploads folder had 2 seperate ids one for the uploads folder and the other 
+for the actual sql database, they were double hashing, on top of that, they were also not displaying on disk, which I checked via a debug that I had ChatGPT write for me 
+since I really didnt know what the hell was going on, don't worry I wasn't cheating or something, it's just the truth, I needed to understand what exactly was going wrong.
+
+The debug you'll find on the side theres 2 debugs, one for the image paths, relative and absolute and a through there you can find if you like the issues that arose from it! 
+
+This is an old text file, that holds the original issue, since I didn't want to throw it away on the side, since I kept getting new bugs after fixing old one, very frustating! 
+
+I kept this and the debugs for references! 
+
+If there's stuff inside of the allProfiles.php or anything in here that looks advanced for just like it wouldn't come from a student let me know and I'll come in and explain it! 
+
+I'm not really sure it'll look like that, but this was an exceptionally hair pulling issue, almost ended up like poseidon from spongebob, since nothing was working, and i couldn't
+find the real issue since the paths looked and functioned correct on browser but php wouldn't populate with them.
+
+Sorry about the extra stuff going on, and thank you for reading, 
+Please let me know if you'd like me to come in and explain or anything of the sort! 
+
+
+/* The original code below pre-fix */
+/* This is after a dozen or more revisions that didn't work, so theres some stuff lost in here, but this was what it looked like before I decideed to just rewrite 
+everything */
+
+
+require_once "CRUD.php"; // includes $pdo connection
+
+header("Content-Type: text/html; charset=UTF-8");
+
+try {
+    $stmt = $pdo->query("SELECT full_Name, bio, profile_image FROM users ORDER BY created_at DESC");
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Database error: " . htmlspecialchars($e->getMessage()));
+}
+
+if (empty($users)) {
+    echo "<p>No profiles found.</p>";
+} else {
+    foreach ($users as $user) {
+
+        // --- Normalize the image path inside the loop ---
+        $imgPath = $user['profile_image'] ?? '';
+
+        // Remove any leading './'
+        $imgPath = str_replace('./', '', $imgPath);
+
+        // Ensure it points from /php/ to /uploads/
+        if (!str_starts_with($imgPath, '../')) {
+            $imgPath = '../' . $imgPath;
+        }
+
+        // This creates the html for the allProfiles, 
+        echo '<div class="profile-card">';
+
+        // This <img> did not work, now this one doesn't work for a different reason, but I was effectively trying to normalize both the sql and uploads folder paths,
+        because they werent interacting properly with the above, and then inputting into the img, because it just wasn't grabbing it> 
+
+        
+        echo '<img src="' . htmlspecialchars($imgPath) . '" alt="' . htmlspecialchars($user['full_Name']) . '">';
+        echo '<h2>' . htmlspecialchars($user['full_Name']) . '</h2>';
+        echo '<p>' . (!empty($user['bio']) ? htmlspecialchars($user['bio']) : 'No bio available') . '</p>';
+        echo '</div>';
+    }
+}
